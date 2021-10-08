@@ -1,0 +1,5 @@
+#!/bin/bash
+set -ex -o pipefail
+
+cd ~
+[ -e datalad-fuse ] || git clone https://github.com/datalad/datalad-fuse

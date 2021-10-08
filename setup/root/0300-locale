@@ -1,0 +1,5 @@
+#!/bin/bash
+set -ex -o pipefail
+
+perl -pli -e 's/^#\s*// if /en_US/i' /etc/locale.gen
+locale-gen

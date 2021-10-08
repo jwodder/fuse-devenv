@@ -1,0 +1,14 @@
+#!/bin/bash
+set -ex -o pipefail
+
+pybinpath="$(python3 -msite --user-base)"/bin
+if [[ ":$PATH:" != *":$pybinpath:"* ]]
+then PATH="$pybinpath:$PATH"
+fi
+
+if ! command -V pip3 > /dev/null 2>&1
+then wget -O- https://bootstrap.pypa.io/get-pip.py | python3 - --user
+fi
+
+python3 -m pip install --upgrade pip setuptools wheel
+python3 -m pip install --upgrade datalad pre-commit tox

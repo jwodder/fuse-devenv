@@ -1,0 +1,22 @@
+#!/bin/bash
+set -ex -o pipefail
+
+. /etc/os-release
+
+if [ ! -e /etc/apt/sources.list.d/neurodebian.sources.list ]
+# Using `wget -nc` will fail if the file already exists
+then wget -O /etc/apt/sources.list.d/neurodebian.sources.list \
+        http://neuro.debian.net/lists/"$VERSION_CODENAME".us-nh.libre
+fi
+
+apt-key adv --recv-keys \
+    --keyserver hkps://keyserver.ubuntu.com \
+    0xA5D32F012649A5A9 \
+|| wget -O- http://neuro.debian.net/_static/neuro.debian.net.asc | apt-key add
+
+apt-get update
+apt-get install -y neurodebian
+nd-configurerepo
+apt-get update  # Is this necessary?
+
+apt-get install -y git-annex-standalone
