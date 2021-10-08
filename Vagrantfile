@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
     config.vm.box = "debian/bullseye64"
 
-    config.vm.provision "shell", inline: <<-SHELL
+    config.vm.provision "shell", inline: <<~SHELL
         #!/bin/bash
         set -ex
         export DEBIAN_FRONTEND=noninteractive
