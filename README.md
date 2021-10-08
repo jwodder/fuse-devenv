@@ -33,6 +33,8 @@ tox --notest
 source .tox/py3/bin/activate
 cd ~/fuse-test/highspeed-bids
 datalad fusefs ../mount
+# As of commit a0bd825, this only works if participants.json was previously
+# fetched with the `fsspec-head` command:
 cat ../mount/participants.json
 # This doesn't work correctly as of commit a0bd825:
 ls -l ../mount
