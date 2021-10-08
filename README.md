@@ -30,7 +30,7 @@ Test out FUSE directly inside the environment with:
 ```bash
 cd datalad_fuse
 tox --notest
-. .tox/py3/bin/activate
+source .tox/py3/bin/activate
 cd ~/fuse-test/highspeed-bids
 datalad fusefs ../mount
 cat ../mount/participants.json
