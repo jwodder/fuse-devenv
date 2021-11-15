@@ -4,7 +4,7 @@ set -ex -o pipefail
 export PATH="$PATH:$HOME/.local/bin"
 
 cd ~
-[ -e datalad-fuse ] || git clone -b gh-7 https://github.com/datalad/datalad-fuse
+[ -e datalad-fuse ] || git clone https://github.com/datalad/datalad-fuse
 
 mkdir -p fuse-test/mount
 cd fuse-test
